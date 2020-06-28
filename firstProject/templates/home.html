@@ -1,0 +1,28 @@
+<!--Extending the HTML-->
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Hello {{name}}!!</h1>
+
+    <!--We have to action the add path to urls.py because after clicking submit, it will look for the add action-->
+    <form action="add" method="POST">
+
+        <!--We need to use this token for the post method-->
+        {% csrf_token %}
+
+        Enter 1st number: <input type="text" name="num1"><br>
+        Enter 2nd number: <input type="text" name="num2"><br>
+        <input type="submit">
+    </form>
+
+
+    {% endblock %}
+</body>
+</html>
