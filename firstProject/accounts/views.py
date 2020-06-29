@@ -50,6 +50,7 @@ def register(request):
 
 
 def login(request):
+    # If it's a post request, then user is submitting the login credentials
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -58,11 +59,14 @@ def login(request):
         user = auth.authenticate(username = username, password = password)
 
         if user is not None:
+            # logging in the user
             auth.login(request, user)
             return redirect("/")
         else:
             messages.info(request, 'Invalid Credentials')
             return redirect("login")
+
+    # If its a get request then the user is trying fetch the login page
     else:
         return render(request, 'login.html')
 
