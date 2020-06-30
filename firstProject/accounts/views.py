@@ -67,7 +67,6 @@ def login(request):
             return redirect("login")
 
     # If its a get request then the user is trying fetch the login page
-    # User will get redirected to the login page
     else:
         return render(request, 'login.html')
 
